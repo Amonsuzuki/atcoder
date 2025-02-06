@@ -17,7 +17,6 @@ int main() {
 	vector<int> available(x + 1, 1);
 	for (int i=0; i<m; i++)
 		available[b[i]] = 0;
-	dp[0] = 1;
 	for (int i=1; i<x + 1; i++) {
 		int flg = 0;
 		for (int j=0; j<n; j++) {
