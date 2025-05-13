@@ -372,36 +372,51 @@ void am_write_stderr(const char *msg) {
 }
 #include <stdio.h>
 
-#define BOX 100000
+void digits(long long int input, long long int layer, long long int *digit) {
+	long long int amaris[layer];
+	long long int cycle, amari, i;
+	long long int initial_layer = layer;
 
-ii table[BOX];
+	i = 1;
+	cycle = input / 5;
+	amari = input % 5 - 1;
+	if (amari < 0)
+		amari = 4;
+	amaris[0] = digit[amari];
+	while (cycle >= 1) {
+		cycle /= 5;
+		amari = cycle % 5;
+		amaris[i] = digit[amari];
+		//cycle /= 5;
+		layer++;
+		i++;
+		printf("%lld, %lld, %lld\n", layer - initial_layer + 1, cycle, digit[amari]);
+	}
+	for (long long int i = initial_layer - 1; i >= 0; i--)
+		printf("%lld", amaris[i]);
+}
+
 
 int main() {
-	int key1 = 1;
-	int key2 = 2;
-	int key3 = 3;
-	int key4 = 4;
-	int avg = 10;
+	long long int input, cycle, amari;
+	long long int layer = 1;
+	long long int answer = 0;
+	long long int digit[] = {0, 2, 4, 6, 8};
 
-	insert_ii(table, key1, 1, BOX);
-	insert_ii(table, key2, 1, BOX);
-	insert_ii(table, key3, 1, BOX);
-	insert_ii(table, key4, 1, BOX);
-
-	printf("%d\n", avg);
-
-	int value1 = delete_ii(table, 1, BOX);
-	insert_ii(table, 2, value1, BOX);
-	avg += (2 - 1) * value1;
-	printf("%d\n", avg);
-
-	int value2 = delete_ii(table, 3, BOX);
-	insert_ii(table, 4, value2, BOX);
-	avg += (4 - 3) * value2;
-	printf("%d\n", avg);
-
-	int value3 = delete_ii(table, 2, BOX);
-	insert_ii(table, 4, value3, BOX);
-	avg += (4 - 2) * value3;
-	printf("%d\n", avg);
+	scanf("%lld", &input);
+	printf("0, %lld\n", input);
+	cycle = input / 5;
+	amari = input % 5;
+	printf("1, %lld\n", cycle);
+	while (cycle >= 1) {
+		amari = cycle % 5;
+		cycle /= 5;
+		layer++;
+		//printf("%lld, %lld\n", layer, cycle);
+	}
+	digits(input, layer, digit);
+	answer += 0;
+	
+	printf("\n");
+	(void)amari;
 }

@@ -9,7 +9,7 @@ TESTDIR = test
 SUBMITTION = sub.c
 HEADDER = /home/amon/amlib/am.h
 
-all: test run clean
+all: test clean
 
 $(LIB_NAME): $(OBJS)
 	ar rcs $@ $^
@@ -43,7 +43,3 @@ test: $(TARGET)
 .PHONY:clean
 clean:
 	-rm $(TARGET)
-	@for testfile in $(wildcard $(TESTDIR)/*.test) ; \
-	do \
-		: > $$testfile ;\
-	done
