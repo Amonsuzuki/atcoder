@@ -384,10 +384,9 @@ void digits(long long int input, long long int layer, long long int *digit) {
 		amari = 4;
 	amaris[0] = digit[amari];
 	while (cycle >= 1) {
-		cycle /= 5;
 		amari = cycle % 5;
 		amaris[i] = digit[amari];
-		//cycle /= 5;
+		cycle /= 5;
 		layer++;
 		i++;
 		printf("%lld, %lld, %lld\n", layer - initial_layer + 1, cycle, digit[amari]);
@@ -400,7 +399,6 @@ void digits(long long int input, long long int layer, long long int *digit) {
 int main() {
 	long long int input, cycle, amari;
 	long long int layer = 1;
-	long long int answer = 0;
 	long long int digit[] = {0, 2, 4, 6, 8};
 
 	scanf("%lld", &input);
@@ -415,7 +413,6 @@ int main() {
 		//printf("%lld, %lld\n", layer, cycle);
 	}
 	digits(input, layer, digit);
-	answer += 0;
 	
 	printf("\n");
 	(void)amari;
